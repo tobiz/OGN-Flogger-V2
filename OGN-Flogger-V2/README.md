@@ -1,18 +1,15 @@
-# OGN-Flight-Logger_V4
-DEVELOPMENT OF OGN-Flight-Logger IS NOW CONTINUING AS: OGN-Flight-Logger_V4
+# OGN-Flogger-V2
+DEVELOPMENT OF OGN-Flight-Logger IS NOW CONTINUING AS: OGN-Flogger-V2
 
 Python APRS/OGN program to log flight times, durations and maximum heights achieved
 
-V4 is functionally the same as V3 but is under development for:
+This is in general functionaly the same as V4 but has been enhance such that it can be built to run on Linux and Microsoft Windows.  (The reason it's not a standard git update from V4 is that it got screwed up when I move to a new machine)
 
-- Packaging for installation using PyPi
-- Removal of libfap for parsing APRS packets (libfap not available on Windows)
-- Restructing code to be more 'compliant', eg separation of code and data into separate directories
-- Various changes with the intention of being installable on Microsoft Windows
+To build use: pyinstaller flogger_gui.py (pyinstaller can be installed on Linux and Windows using pip).  This will result in an executable in .../src/dist/OGN-Flogger_gui/OGN-Flogger_gui.  The executable will include all the tricky modules such as PyQt4 and pysqlite3. (pyinstaller is a great way to build difficult python programs, ie ones that include PyQt4 - the guys that made it should be congratulated)
 
 Installation
 
-To install Flogger you will need to have installed:
+To build Flogger-V2 you will need to have installed:
 
 'geocoder>=1.4.0',
 'parse>=1.8.0',
@@ -26,15 +23,10 @@ To install Flogger you will need to have installed:
 'requests>=2.13.0',
 'mplleaflet>=0.0.5',
 'LatLon>=1.0.2',
-'PyQt4>=4.11.4',
 'pyephem>=3.7.6.0',
 'protobuf>=3.5.2.post1',
 'adhocracy_pysqlite>=2.6.3',
-'pysqlite3>=0.1.0',
 'matplotlib'
-
-The tricky ones to install are: PyQt4 and pysqlite3.
-To install PyQT4 on Linux based systems see: http://problemssol.blogspot.com/2010/12/compile-and-install-pyqt4-for-python27.html.
 
 Running
 
