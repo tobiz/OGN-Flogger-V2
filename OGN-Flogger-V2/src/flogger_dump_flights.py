@@ -16,7 +16,7 @@ from flogger_path_join import *
 # See http://stackoverflow.com/questions/17556450/sqlite3-python-export-from-sqlite-to-csv-text-file-does-not-exceed-20k
 #
 
-def dump_flights(settings):
+def dump_flights(settings):  
     #    
     #-----------------------------------------------------------------
     # This function converts and dumps todays' flights
@@ -30,9 +30,9 @@ def dump_flights(settings):
 #    db_file = path_join_dd(os.path.abspath(__file__), ["db", settings.FLOGGER_DB_NAME])
     db_file = path_join_dd(os.path.abspath(__file__), ["db", db_name])
 #    flight_log_file = os.path.join(path,"../logs/" + settings.FLOGGER_FLIGHTS_LOG)
-    flights_log = str( settings.FLOGGER_FLIGHTS_LOG)
+    flights_log = str(settings.FLOGGER_FLIGHTS_LOG)
 #   flight_log_file = path_join_dd(os.path.abspath(__file__), ["logs", settings.FLOGGER_FLIGHTS_LOG])
-    flight_log_file = path_join_dd(os.path.abspath(__file__), ["logs", flights_log])
+    flights_log_file = path_join_dd(os.path.abspath(__file__), ["logs", flights_log])
     print "Start flights table dump"
     try:
 #        db = sqlite3.connect(settings.FLOGGER_DB_NAME)
@@ -48,8 +48,10 @@ def dump_flights(settings):
     except:
         print "failed to select max(sdate) FROM flights"
         
-    start_time = datetime.datetime.now()
-    csv_path = settings.FLOGGER_FLIGHTS_LOG + str(start_time) + "_flights.csv"
+    start_time = str(datetime.datetime.now()).replace(" ", "_")
+    # Make a unique filename
+#   csv_path = settings.FLOGGER_FLIGHTS_LOG + start_time + "_flights.csv"
+    csv_path = flights_log_file + start_time + "_flights.csv"
     print "csv file name is: ", csv_path  
      
     if max_row <> (None,): 
@@ -89,23 +91,23 @@ def dump_flights(settings):
          
 #    cursor.execute("SELECT * FROM flights WHERE sdate=? ORDER by sdate, stime", (max_date,))
 #    cursor.execute("SELECT flight_no, sdate, stime, etime, duration, src_callsign, max_altitude, registration, track_file_name FROM flights WHERE sdate=? ORDER by sdate, stime", (max_date,))
-    cursor.execute("SELECT flight_no, sdate, stime, etime, duration, src_callsign, max_altitude, registration, track_file_name, tug_registration, tug_altitude, tug_model FROM flights WHERE sdate=? ORDER by sdate, stime", (max_date,))
-    start_time = datetime.datetime.now()
-    csv_path = settings.FLOGGER_FLIGHTS_LOG + str(start_time) + "_flights.csv"
-    print "csv file name is: ", csv_path
-    
+#    cursor.execute("SELECT flight_no, sdate, stime, etime, duration, src_callsign, max_altitude, registration, track_file_name, tug_registration, tug_altitude, tug_model FROM flights WHERE sdate=? ORDER by sdate, stime", (max_date,))
+#    start_time = datetime.datetime.now()
+#    csv_path = settings.FLOGGER_FLIGHTS_LOG + str(start_time) + "_flights.csv"
+#    print "csv file name is: ", csv_path
+#    
 #    with open(csv_path, "wb") as csv_file:
-    with open(csv_path, "w") as csv_file:
-        csv_writer = csv.writer(csv_file)
-        # Write headers.
-        print "Output header"
-        csv_writer.writerow([i[0] for i in cursor.description])
-        # Write data.
-        print "Output data"
-        csv_writer.writerows(cursor)
-    csv_file.close()
-    print "End flights table dump"
-    return
+#    with open(csv_path, "w") as csv_file:
+#        csv_writer = csv.writer(csv_file)
+#        # Write headers.
+#        print "Output header"
+#        csv_writer.writerow([i[0] for i in cursor.description])
+#        # Write data.
+#        print "Output data"
+#        csv_writer.writerows(cursor)
+#    csv_file.close()
+#    print "End flights table dump"
+#    return
 
 #dump_flights()
     
