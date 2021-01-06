@@ -1,7 +1,7 @@
 # OGN-Flogger-V2
 OGN-Flogger for Linux and Windows
 
-DEVELOPMENT OF OGN-Flight-Logger IS NOW CONTINUING AS: OGN-Flogger-V2
+DEVELOPMENT OF OGN-Flight-Logger IS NOW CONTINUING AS: OGN-Flogger-V2.2
 
 Python APRS/OGN program to log flight times, durations and maximum heights achieved
 
